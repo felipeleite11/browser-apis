@@ -3,10 +3,14 @@
 import { useState } from "react"
 import toast from "react-hot-toast"
 import Image from "next/image"
+
 import { getCurrentLocation } from "@/config/geolocation"
 import { notify } from "@/config/notification"
 import { MapExample } from "@/component/MapExample"
-import "leaflet/dist/leaflet.css"
+
+import '@/assets/leaflet/leaflet'
+import "@/assets/leaflet/leaflet.css"
+import searchIcon from '@/assets/search.svg'
 
 export default function Home() {
 	const [location, setLocation] = useState<Partial<GeolocationCoordinates> | null>(null)
@@ -33,31 +37,43 @@ export default function Home() {
 		}
 	}
 
+	async function handleCopyToClipboard() {
+		const item = new ClipboardItem({
+			
+		})
+
+		await navigator.clipboard.write([item])
+	}
+
 	return (
 		<div className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
 			<button onClick={handleNotify} className="p-3 rounded-md bg-white text-gray-800 outline-none hover:opacity-80">Notification API</button>
 
-			<button onClick={handleGetGeolocation} className="p-3 rounded-md bg-white text-gray-800 outline-none hover:opacity-80">Get geolocation</button>
+			<button onClick={handleGetGeolocation} className="p-3 rounded-md bg-white text-gray-800 outline-none hover:opacity-80">Geolocation API</button>
 
 			{isSearchingLocation ? (
 				<div className="flex flex-col gap-1 items-center">
 					<Image
 						alt="" 
-						src="search.svg"
+						src={searchIcon}
 						height={64}
 						width={64}
 					/>
+
 					<span>Buscando localização...</span>
 				</div>
 			) : location ? (
-				<div className="w-[600px]">
-					<p>{location.latitude} - {location.longitude}</p>
+				<div className="w-[600px] flex flex-col gap-2">
+					<p>Latitude: {location.latitude}</p>
+					<p>Longitude: {location.longitude}</p>
 
 					<MapExample 
 						position={[location.latitude!, location.longitude!]} 
 					/>
 				</div>
 			) : null}
+
+			<button onClick={handleCopyToClipboard} className="p-3 rounded-md bg-white text-gray-800 outline-none hover:opacity-80">Clipboard API</button>
 		</div>
 	)
 }
