@@ -16,7 +16,7 @@ export default function Home() {
 	// const [location, setLocation] = useState<Partial<GeolocationCoordinates> | null>(null)
 	// const [isSearchingLocation, setIsSearchingLocation] = useState(false)
 
-	const isWindowAvailable = typeof window !== 'undefined'
+	// const isWindowAvailable = typeof window !== 'undefined'
 
 	// function handleNotify() {
 	// 	notify({
@@ -40,15 +40,15 @@ export default function Home() {
 	// }
 
 	async function handleCopyToClipboard() {
-		if (isWindowAvailable) {
-			const text = "Olá, mundo!"
+		// if (isWindowAvailable) {
+		// 	const text = "Olá, mundo!"
 
-			const item = new ClipboardItem({
-				'text/plain': new Blob([text], { type: 'text/plain' })
-			})
+		// 	const item = new ClipboardItem({
+		// 		'text/plain': new Blob([text], { type: 'text/plain' })
+		// 	})
 
-			await navigator.clipboard.write([item])
-		}
+		// 	await navigator.clipboard.write([item])
+		// }
 	}
 
 	return (
