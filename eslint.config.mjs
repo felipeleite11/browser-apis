@@ -17,6 +17,12 @@ const eslintConfig = [
       "@typescript-eslint/no-unused-vars": "off"
     },
   },
+  {
+    ignores: [
+      "assets/",   
+      "node_modules/"
+    ]
+  }
 ];
 
 export default eslintConfig;
