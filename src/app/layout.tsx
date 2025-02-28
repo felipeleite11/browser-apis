@@ -35,7 +35,7 @@ export default function RootLayout({
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
 				<main className="p-12 flex flex-col gap-8">
-					<h1 className="text-lg font-bold">BROWSER API'S DEMO</h1>
+					<h1 className="text-lg font-bold">BROWSER APIS DEMO</h1>
 
 					{children}
 				</main>
