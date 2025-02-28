@@ -22,24 +22,28 @@ try {
 }
 
 export function notify({ title = 'Notification', content }: NotificationProps) {
-	if(Notification.permission === 'granted') {
-		const notification = new Notification(title, { 
-			body: content, 
-			icon: '/images/logo.png',
-			requireInteraction: true
-		})
+	const isWindowAvailable = typeof window !== 'undefined'
 
-		notification.onclick = () => {
-			toast('Notification was clicked!', {
-				position: 'bottom-center'
+	if(isWindowAvailable) {
+		if(Notification.permission === 'granted') {
+			const notification = new Notification(title, { 
+				body: content, 
+				icon: '/images/logo.png',
+				requireInteraction: true
+			})
+
+			notification.onclick = () => {
+				toast('Notification was clicked!', {
+					position: 'bottom-center'
+				})
+			}
+		} else {
+			toast(content, { 
+				duration: 5000,
+				style: {
+					backgroundColor: '#ffeb3b'
+				}
 			})
 		}
-	} else {
-		toast(content, { 
-			duration: 5000,
-			style: {
-				backgroundColor: '#ffeb3b'
-			}
-		})
 	}
 }

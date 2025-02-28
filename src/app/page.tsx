@@ -16,6 +16,8 @@ export default function Home() {
 	const [location, setLocation] = useState<Partial<GeolocationCoordinates> | null>(null)
 	const [isSearchingLocation, setIsSearchingLocation] = useState(false)
 
+	const isWindowAvailable = typeof window !== 'undefined'
+
 	function handleNotify() {
 		notify({
 			title: `Felipe diz:`,
@@ -38,11 +40,15 @@ export default function Home() {
 	}
 
 	async function handleCopyToClipboard() {
-		const item = new ClipboardItem({
-			
-		})
+		if (isWindowAvailable) {
+			const text = "Olá, mundo!"
 
-		await navigator.clipboard.write([item])
+			const item = new ClipboardItem({
+				'text/plain': new Blob([text], { type: 'text/plain' })
+			})
+
+			await navigator.clipboard.write([item])
+		}
 	}
 
 	return (
