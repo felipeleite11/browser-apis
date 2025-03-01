@@ -75,6 +75,8 @@ export default function Home() {
 					<p>Latitude: {location.latitude}</p>
 					<p>Longitude: {location.longitude}</p>
 
+					<a href={`https://www.google.com/maps?q=${location.latitude},${location.longitude}`}></a>
+
 					{/* <MapExample 
 						position={[location.latitude!, location.longitude!]} 
 					/> */}
