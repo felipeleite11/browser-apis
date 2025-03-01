@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import toast from "react-hot-toast"
-// import Image from "next/image"
+import Image from "next/image"
 
 import { getCurrentLocation } from "@/config/geolocation"
 import { notify } from "@/config/notification"
@@ -10,7 +10,7 @@ import { notify } from "@/config/notification"
 
 // import '@/assets/leaflet/leaflet'
 // import "@/assets/leaflet/leaflet.css"
-// import searchIcon from '@/assets/search.svg'
+import searchIcon from '@/assets/search.svg'
 
 export default function Home() {
 	const [location, setLocation] = useState<Partial<GeolocationCoordinates> | null>(null)
@@ -59,7 +59,7 @@ export default function Home() {
 
 			<button onClick={handleGetGeolocation} className="p-3 rounded-md bg-white text-gray-800 outline-none hover:opacity-80">Geolocation API</button>
 
-			{/* {isSearchingLocation ? (
+			{isSearchingLocation ? (
 				<div className="flex flex-col gap-1 items-center">
 					<Image
 						alt="" 
@@ -75,11 +75,11 @@ export default function Home() {
 					<p>Latitude: {location.latitude}</p>
 					<p>Longitude: {location.longitude}</p>
 
-					<MapExample 
+					{/* <MapExample 
 						position={[location.latitude!, location.longitude!]} 
-					/>
+					/> */}
 				</div>
-			) : null} */}
+			) : null}
 
 			<button onClick={handleCopyToClipboard} className="p-3 rounded-md bg-white text-gray-800 outline-none hover:opacity-80">Clipboard API</button>
 		</div>
