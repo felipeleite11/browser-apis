@@ -10,7 +10,7 @@ import { notify } from "@/config/notification"
 
 // import '@/assets/leaflet/leaflet'
 // import "@/assets/leaflet/leaflet.css"
-import searchIcon from '@/assets/search.svg'
+// import searchIcon from '@/assets/search.svg'
 
 export default function Home() {
 	const [location, setLocation] = useState<Partial<GeolocationCoordinates> | null>(null)
@@ -48,6 +48,8 @@ export default function Home() {
 			})
 
 			await navigator.clipboard.write([item])
+
+			toast.success('Conteúdo copiado com sucesso!')
 		}
 	}
 

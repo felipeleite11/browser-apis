@@ -28,7 +28,7 @@ export function notify({ title = 'Notification', content }: NotificationProps) {
 		if(Notification.permission === 'granted') {
 			const notification = new Notification(title, { 
 				body: content, 
-				icon: '/images/logo.png',
+				icon: 'favicon.png',
 				requireInteraction: true
 			})
 
